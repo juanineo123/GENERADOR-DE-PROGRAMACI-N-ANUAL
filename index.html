@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Planificación Anual Curricular (PAC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 font-['Poppins',_sans-serif]">
+
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-xl p-6 md:p-10">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">Generador de Planificación Anual</h1>
+        <p class="text-center text-gray-500 mb-8">La herramienta definitiva para el docente innovador.</p>
+
+        <div class="w-full mb-8 overflow-x-auto pb-4">
+            <div class="flex justify-between items-start min-w-max mx-auto">
+                <div id="progress-step-1" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">1</div><p class="text-xs mt-2 font-semibold">Datos</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-2" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">2</div><p class="text-xs mt-2 font-semibold">Justificación</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-3" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">3</div><p class="text-xs mt-2 font-semibold">Calendarización</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-4" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">4</div><p class="text-xs mt-2 font-semibold">Transversales</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-5" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">5</div><p class="text-xs mt-2 font-semibold">Evaluación</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-6" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">6</div><p class="text-xs mt-2 font-semibold">Recursos</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-7" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">7</div><p class="text-xs mt-2 font-semibold">Cierre</p></div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-8" class="progress-step text-center w-32"><div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">8</div><p class="text-xs mt-2 font-semibold">Previsualizar</p></div>
+            </div>
+        </div>
+
+        <div id="form-container">
+            <div id="form-step-1" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">1. Datos Informativos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                     <div><label for="info-nivel" class="font-medium text-gray-600">Nivel</label><select id="info-nivel" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"></select></div>
+                    <div><label for="info-grado" class="font-medium text-gray-600">Grado</label><select id="info-grado" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"></select></div>
+                    <div><label for="info-area" class="font-medium text-gray-600">Área Curricular</label><select id="info-area" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"><option value="Arte y Cultura">Arte y Cultura</option><option value="Ciencias Sociales">Ciencias Sociales</option><option value="Comunicación">Comunicación</option><option value="DPCC">Desarrollo Personal, Ciudadanía y Cívica</option><option value="Educación Física">Educación Física</option><option value="Educación Religiosa">Educación Religiosa</option><option value="Inglés">Inglés</option><option value="Matemática" selected>Matemática</option><option value="Ciencia y Tecnología">Ciencia y Tecnología</option></select></div>
+                    <div><label for="info-ie" class="font-medium text-gray-600">Institución Educativa</label><input id="info-ie" type="text" value="Ángel Custodio García Ramírez" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div>
+                    <div><label for="info-director" class="font-medium text-gray-600">Director(a)</label><input id="info-director" type="text" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div>
+                    <div><label for="info-subdirector" class="font-medium text-gray-600">Subdirector(a)</label><input id="info-subdirector" type="text" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div>
+                    <div><label for="info-docente" class="font-medium text-gray-600">Docente Responsable</label><input id="info-docente" type="text" value="Juan Manuel Caicedo Oliva" class="w-full mt-1 p-3 bg-gray-200 rounded-lg border" readonly></div>
+                    <div><label for="info-ano" class="font-medium text-gray-600">Año Lectivo</label><input id="info-ano" type="number" value="2025" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div>
+                    <div class="md:col-span-2 lg:col-span-3"><label for="info-realidad" class="font-medium text-gray-600">Realidad de la Localidad (Contexto)</label><textarea id="info-realidad" rows="3" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border" placeholder="Ej: Los estudiantes provienen de una zona rural..."></textarea></div>
+                </div>
+            </div>
+
+            <div id="form-step-2" class="step"><h2 class="text-2xl font-semibold text-gray-700 mb-6">2. Justificación y Perfil de Egreso</h2><div><div class="flex justify-between items-center mb-1"><label for="desc-justificacion" class="font-medium text-gray-600">Justificación</label><button id="suggest-justificacion-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button></div><textarea id="desc-justificacion" rows="6" class="w-full p-3 bg-gray-50 rounded-lg border"></textarea></div><div class="mt-6"><div class="flex justify-between items-center mb-1"><label for="desc-perfil" class="font-medium text-gray-600">Perfil de Egreso</label><button id="suggest-perfil-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button></div><textarea id="desc-perfil" rows="4" class="w-full p-3 bg-gray-50 rounded-lg border"></textarea></div></div>
+
+            <div id="form-step-3" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">3. Calendarización y Organización</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6"><div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end"><div><label for="period-division" class="font-medium text-gray-600">División del Año</label><select id="period-division" class="w-full mt-1 p-3 bg-white rounded-lg border"><option value="trimestres">Trimestres</option><option value="bimestres" selected>Bimestres</option></select></div><div><label for="total-weeks" class="font-medium text-gray-600">Semanas Lectivas</label><input type="number" id="total-weeks" value="38" class="w-full mt-1 p-3 bg-white rounded-lg border"></div><div><p class="text-sm font-semibold text-gray-700">Semanas por Asignar:</p><span id="weeks-left" class="text-2xl font-bold text-blue-600">0</span></div></div></div>
+                <div id="organization-container" class="space-y-4"></div>
+            </div>
+
+            <div id="form-step-4" class="step"><h2 class="text-2xl font-semibold text-gray-700 mb-6">4. Enfoques Transversales</h2><p class="text-gray-600 mb-4">Seleccione los enfoques que se priorizarán.</p><div id="enfoques-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div></div>
+
+            <div id="form-step-5" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">5. Evaluación</h2>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="eval-diagnostica" class="font-medium text-gray-600">Evaluación Diagnóstica</label>
+                            <button id="suggest-eval-diagnostica-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button>
+                        </div>
+                        <textarea id="eval-diagnostica" rows="3" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></textarea>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="eval-formativa" class="font-medium text-gray-600">Evaluación Formativa</label>
+                            <button id="suggest-eval-formativa-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button>
+                        </div>
+                        <textarea id="eval-formativa" rows="3" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></textarea>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="eval-sumativa" class="font-medium text-gray-600">Evaluación Sumativa</label>
+                            <button id="suggest-eval-sumativa-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button>
+                        </div>
+                        <textarea id="eval-sumativa" rows="3" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="form-step-6" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">6. Materiales y Recursos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="recursos-docente" class="font-medium text-gray-600">Para el Docente</label>
+                            <button id="suggest-recursos-docente-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button>
+                        </div>
+                        <textarea id="recursos-docente" rows="5" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></textarea>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="recursos-estudiante" class="font-medium text-gray-600">Para el Estudiante</label>
+                            <button id="suggest-recursos-estudiante-btn" class="ai-button"><span>✨ Sugerir con IA</span><div class="loader"></div></button>
+                        </div>
+                        <textarea id="recursos-estudiante" rows="5" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="form-step-7" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">7. Revise y Genere Documento</h2>
+                <div class="text-center bg-blue-50 border border-blue-200 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-blue-800">Casi listo su PAC</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Haga clic en el botón para generar la vista previa del documento. Podrá revisarlo y luego descargarlo.</p>
+                    <button id="generate-preview-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition text-lg shadow-lg">Generar Documento para Previsualizar</button>
+                </div>
+            </div>
+
+            <div id="form-step-8" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">8. Vista Previa del Documento</h2>
+                <div id="preview-content" class="bg-white p-6 rounded-lg shadow-inner border border-gray-300 min-h-[400px] overflow-y-auto mb-6">
+                    <p class="text-gray-500 text-center">Aquí aparecerá la vista previa de tu documento.</p>
+                </div>
+                <div class="text-center">
+                    <button id="download-btn-final" class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition text-lg shadow-lg">Descargar .docx</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between mt-10">
+                <button id="prev-btn" class="nav-button bg-gray-300 text-gray-800 hover:bg-gray-400">Atrás</button>
+                <button id="next-btn" class="nav-button bg-blue-600 text-white hover:bg-blue-700 ml-auto">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="unit-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-2xl transform transition-all max-h-[90vh] overflow-y-auto">
+            <h3 id="unit-modal-title" class="text-2xl font-bold text-gray-800 mb-6">Añadir Nueva Unidad</h3>
+            <div class="space-y-4">
+                 <div><h4 class="font-medium text-gray-600 mb-2">Paso A: Seleccione las competencias</h4><div id="competencies-checklist" class="space-y-2 p-3 bg-gray-100 rounded-md max-h-40 overflow-y-auto"></div></div>
+                 <fieldset id="unit-details-fieldset" disabled>
+                     <div><div class="flex justify-between items-center mb-1"><label for="unit-title" class="font-medium text-gray-600">Paso B: Título de la Unidad</label><button id="suggest-unit-title-btn" class="ai-button"><span>✨ Sugerir</span><div class="loader"></div></button></div><input type="text" id="unit-title" class="w-full p-3 bg-gray-50 rounded-lg border"></div>
+                    <div class="grid grid-cols-2 gap-4"><div><label for="unit-start-date" class="font-medium text-gray-600">Fecha de Inicio</label><input type="date" id="unit-start-date" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div><div><label for="unit-end-date" class="font-medium text-gray-600">Fecha de Fin</label><input type="date" id="unit-end-date" class="w-full mt-1 p-3 bg-gray-50 rounded-lg border"></div></div>
+                    <div><div class="flex justify-between items-center mb-1"><label for="unit-situacion" class="font-medium text-gray-600">Paso C: Situación Significativa</label><button id="suggest-unit-situacion-btn" class="ai-button"><span>✨ Sugerir</span><div class="loader"></div></button></div><textarea id="unit-situacion" rows="3" class="w-full p-3 bg-gray-50 rounded-lg border"></textarea></div>
+                    <div><div class="flex justify-between items-center mb-1"><label for="unit-producto" class="font-medium text-gray-600">Paso D: Producto Integrador</label><button id="suggest-unit-producto-btn" class="ai-button"><span>✨ Sugerir</span><div class="loader"></div></button></div><input type="text" id="unit-producto" class="w-full p-3 bg-gray-50 rounded-lg border"></div>
+                 </fieldset>
+            </div>
+            <div class="flex justify-end items-center mt-8 space-x-3">
+                 <button id="cancel-unit-btn" class="nav-button bg-gray-200 text-gray-800">Cancelar</button>
+                 <button id="add-unit-btn" class="nav-button bg-blue-600 text-white">Añadir Unidad</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

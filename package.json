@@ -1,0 +1,10 @@
+{
+  "name": "generador-planificacion-anual",
+  "version": "1.0.0",
+  "description": "Generador de Planificación Anual Curricular para docentes innovadores.",
+  "main": "index.html",
+  "dependencies": {
+    "docx": "^8.5.0",
+    "@google/generative-ai": "^0.12.0"
+  }
+}

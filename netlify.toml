@@ -1,0 +1,11 @@
+# Este bloque es para el proceso de construcción del sitio.
+[build]
+  # Para un sitio simple de HTML, CSS y JS, no necesitamos un comando de construcción.
+  command = "echo 'No build command needed'"
+  # Esta es la carpeta principal de nuestro sitio que se hará pública.
+  publish = "."
+
+# Este bloque le dice a Netlify dónde encontrar nuestras funciones serverless.
+[functions]
+  # Todas nuestras funciones de backend vivirán en esta carpeta.
+  directory = "netlify/functions"
