@@ -260,6 +260,19 @@ const competenciasPorArea = {
             ],
             "desempeño": "Propone alternativas de solución tecnológica a problemas de su entorno, con base en conocimientos científicos y prácticas locales, considerando las implicancias éticas, sociales y ambientales de su uso."
         }
+    },
+
+    "Educación para el Trabajo": {
+        "EPT1": {
+            "nombre": "Gestiona proyectos de emprendimiento económico o social",
+            "capacidades": [
+                "Crea propuestas de valor.",
+                "Aplica habilidades técnicas.",
+                "Trabaja cooperativamente para lograr objetivos y metas.",
+                "Evalúa los resultados del proyecto de emprendimiento."
+            ],
+            "desempeño": "Gestiona proyectos de emprendimiento al planificar y ejecutar actividades para alcanzar sus objetivos, integrando recursos, trabajando en equipo, y evaluando los resultados para proponer mejoras, demostrando iniciativa y perseverancia."
+        }
     }
 };
 
