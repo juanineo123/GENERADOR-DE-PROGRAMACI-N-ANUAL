@@ -16,7 +16,7 @@ exports.handler = async function(event) {
         const { prompt } = JSON.parse(event.body);
 
         // 2. Seleccionamos el modelo de IA
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
         // 3. Generamos el contenido
         const result = await model.generateContent(prompt);
