@@ -28,7 +28,6 @@
                 messagingSenderId: "917193676993",
                 appId: "1:917193676993:web:da3a51e59246bd917c1c40"
             };
-
             const suiteLoginPageUrl = 'https://www.caicedoeduca.com/';
 
             try {
@@ -90,21 +89,26 @@
                 <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
                 <div id="progress-step-5" class="progress-step text-center w-32">
                     <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">5</div>
-                    <p class="text-xs mt-2 font-semibold">Evaluación</p>
+                    <p class="text-xs mt-2 font-semibold">Tutoría</p>
                 </div>
                 <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
                 <div id="progress-step-6" class="progress-step text-center w-32">
                     <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">6</div>
-                    <p class="text-xs mt-2 font-semibold">Recursos</p>
+                    <p class="text-xs mt-2 font-semibold">Evaluación</p>
                 </div>
                 <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
                 <div id="progress-step-7" class="progress-step text-center w-32">
                     <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">7</div>
-                    <p class="text-xs mt-2 font-semibold">Cierre</p>
+                    <p class="text-xs mt-2 font-semibold">Recursos</p>
                 </div>
                 <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
                 <div id="progress-step-8" class="progress-step text-center w-32">
                     <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">8</div>
+                    <p class="text-xs mt-2 font-semibold">Cierre</p>
+                </div>
+                <div class="flex-1 h-1 bg-gray-200 mt-4"></div>
+                <div id="progress-step-9" class="progress-step text-center w-32">
+                    <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center font-bold">9</div>
                     <p class="text-xs mt-2 font-semibold">Previsualizar</p>
                 </div>
             </div>
@@ -203,9 +207,105 @@
                 <p class="text-gray-600 mb-4">Seleccione los enfoques que se priorizarán.</p>
                 <div id="enfoques-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
-
             <div id="form-step-5" class="step">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-6">5. Evaluación</h2>
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">5. Tutoría y Orientación Educativa (TOE)</h2>
+                <p class="text-gray-600 mb-4">Seleccione las dimensiones de la tutoría que trabajará durante el año y
+                    describa las actividades principales.</p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Dimensiones de la Tutoría</h3>
+                    <p class="text-sm text-gray-600 mb-4">Seleccione las dimensiones que se abordarán en las sesiones de
+                        tutoría:</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="personal"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Personal</span>
+                                <p class="text-xs text-gray-600">Autoconocimiento, autoestima, identidad</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="social"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Social</span>
+                                <p class="text-xs text-gray-600">Relaciones interpersonales, convivencia</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="aprendizajes"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">De los Aprendizajes</span>
+                                <p class="text-xs text-gray-600">Técnicas de estudio, motivación académica</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="vocacional"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Vocacional</span>
+                                <p class="text-xs text-gray-600">Proyecto de vida, orientación profesional</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="salud"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Salud Corporal y Mental</span>
+                                <p class="text-xs text-gray-600">Hábitos saludables, salud mental</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="cultura"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Cultura y Actualidad</span>
+                                <p class="text-xs text-gray-600">Identidad cultural, acontecimientos actuales</p>
+                            </div>
+                        </label>
+
+                        <label
+                            class="flex items-start cursor-pointer bg-white p-3 rounded-lg border hover:border-blue-400 transition">
+                            <input type="checkbox" name="dimension-tutoria" value="convivencia"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 mt-1">
+                            <div>
+                                <span class="font-semibold text-gray-800">Convivencia y Disciplina</span>
+                                <p class="text-xs text-gray-600">Normas, resolución de conflictos</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="tutoria-actividades" class="font-medium text-gray-600">Actividades y Estrategias de
+                            Tutoría</label>
+                        <button id="suggest-tutoria-btn" class="ai-button">
+                            <span>✨ Sugerir con IA</span>
+                            <div class="loader"></div>
+                        </button>
+                    </div>
+                    <textarea id="tutoria-actividades" rows="6" class="w-full p-3 bg-gray-50 rounded-lg border"
+                        placeholder="Describa las principales actividades, estrategias y sesiones de tutoría que desarrollará durante el año lectivo..."></textarea>
+                </div>
+            </div>
+
+            <div id="form-step-6" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">6. Evaluación</h2>
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between items-center mb-1">
@@ -241,8 +341,8 @@
                 </div>
             </div>
 
-            <div id="form-step-6" class="step">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-6">6. Materiales y Recursos</h2>
+            <div id="form-step-7" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">7. Materiales y Recursos</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <div class="flex justify-between items-center mb-1">
@@ -268,8 +368,8 @@
                 </div>
             </div>
 
-            <div id="form-step-7" class="step">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-6">7. Revise y Genere Documento</h2>
+            <div id="form-step-8" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">8. Revise y Genere Documento</h2>
                 <div class="text-center bg-blue-50 border border-blue-200 rounded-lg p-8">
                     <h3 class="text-2xl font-bold text-blue-800">Casi listo su PAC</h3>
                     <p class="text-gray-600 mt-2 mb-6">Haga clic en el botón para generar la vista previa del documento.
@@ -280,8 +380,8 @@
                 </div>
             </div>
 
-            <div id="form-step-8" class="step">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-6">8. Vista Previa del Documento</h2>
+            <div id="form-step-9" class="step">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6">9. Vista Previa del Documento</h2>
                 <div id="preview-content"
                     class="bg-white p-6 rounded-lg shadow-inner border border-gray-300 min-h-[400px] overflow-y-auto mb-6">
                     <p class="text-gray-500 text-center">Aquí aparecerá la vista previa de tu documento.</p>
@@ -308,8 +408,7 @@
             <div class="space-y-4">
                 <div>
                     <h4 class="font-medium text-gray-600 mb-2">Paso A: Seleccione las competencias</h4>
-                    <div id="competencies-checklist"
-                        class="space-y-2 p-3 bg-gray-100 rounded-md max-h-40 overflow-y-auto"></div>
+                    <div id="competencies-checklist" class="space-y-2 p-3 bg-gray-100 rounded-md"></div>
                 </div>
                 <fieldset id="unit-details-fieldset" disabled>
                     <div>

@@ -2,7 +2,7 @@
 const { Document, Packer, Paragraph, HeadingLevel, TextRun, AlignmentType, Table, TableCell, TableRow, WidthType, BorderStyle, Numbering, LevelFormat, Indent, ShadingType, VerticalAlign } = require('docx');
 
 // Esta es la función principal que Netlify ejecutará
-exports.handler = async function(event) {
+exports.handler = async function (event) {
     // 1. Recibir y decodificar los datos del formulario que vienen del frontend
     const data = JSON.parse(event.body);
 
@@ -11,8 +11,21 @@ exports.handler = async function(event) {
 
     // Función para convertir texto plano con numeración a párrafos con lista
     const createNumberedList = (text) => {
-        if (!text) return [];
-        const items = text.split(/\d+\.\s*/).filter(item => item.trim() !== '');
+        if (!text || text.trim() === '') return [];
+
+        // Intentar split con numeración (1. 2. 3. etc)
+        let items = text.split(/\d+\.\s*/).filter(item => item.trim() !== '');
+
+        // Si no hay numeración, split por líneas
+        if (items.length <= 1) {
+            items = text.split('\n').filter(item => item.trim() !== '');
+        }
+
+        // Si aún no hay items, devolver el texto completo como un solo item
+        if (items.length === 0 && text.trim() !== '') {
+            items = [text.trim()];
+        }
+
         return items.map((item) => new Paragraph({
             children: [new TextRun(item.trim())],
             numbering: {
@@ -143,15 +156,15 @@ exports.handler = async function(event) {
                 new Table({
                     width: { size: 100, type: WidthType.PERCENTAGE },
                     rows: [
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "INSTITUCIÓN EDUCATIVA", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoIe || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "DIRECTOR(A)", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoDirector || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "SUBDIRECTOR(A)", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoSubdirector || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "NIVEL", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoNivel || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "ÁREA", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoArea || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "GRADO", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoGrado || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "DOCENTE RESPONSABLE", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoDocente || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "AÑO LECTIVO", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoAno || '')], shading: lightBlueShading })] }),
-                        new TableRow({ children: [new TableCell({ children: [new Paragraph({text: "REALIDAD DE LA LOCALIDAD (CONTEXTO)", run: { bold: true, allCaps: true }})], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoRealidad || 'No especificado.')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "INSTITUCIÓN EDUCATIVA", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoIe || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "DIRECTOR(A)", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoDirector || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "SUBDIRECTOR(A)", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoSubdirector || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "NIVEL", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoNivel || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "ÁREA", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoArea || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "GRADO", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoGrado || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "DOCENTE RESPONSABLE", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoDocente || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "AÑO LECTIVO", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoAno || '')], shading: lightBlueShading })] }),
+                        new TableRow({ children: [new TableCell({ children: [new Paragraph({ text: "REALIDAD DE LA LOCALIDAD (CONTEXTO)", run: { bold: true, allCaps: true } })], shading: lightBlueShading }), new TableCell({ children: [new Paragraph(data.infoRealidad || 'No especificado.')], shading: lightBlueShading })] }),
                     ],
                 }),
                 breakParagraph(),
@@ -171,6 +184,21 @@ exports.handler = async function(event) {
                     ]
                 }),
                 new Paragraph(data.descPerfil || 'El docente no describió el perfil de egreso.'),
+                breakParagraph(),
+                new Paragraph({
+                    children: [
+                        new TextRun({ text: "Propósitos de Aprendizaje del Grado:", bold: true }),
+                    ]
+                }),
+                new Paragraph(data.descPropositos || 'No se generaron propósitos de aprendizaje.'),
+                breakParagraph(),
+
+                new Paragraph({
+                    children: [
+                        new TextRun({ text: "Vínculos con otras Áreas Curriculares:", bold: true }),
+                    ]
+                }),
+                new Paragraph(data.descVinculos || 'No se generaron vínculos con otras áreas.'),
                 breakParagraph(),
 
                 // Lógica para renderizar Competencias, Capacidades y Desempeños del Área
@@ -438,7 +466,7 @@ exports.handler = async function(event) {
                                     });
                                 }),
                             ],
-                             borders: {
+                            borders: {
                                 top: { style: BorderStyle.SINGLE, size: 6, color: "000000" },
                                 bottom: { style: BorderStyle.SINGLE, size: 6, color: "000000" },
                                 left: { style: BorderStyle.SINGLE, size: 6, color: "000000" },
@@ -454,8 +482,52 @@ exports.handler = async function(event) {
                 })(),
                 breakParagraph(),
 
+                new Paragraph({ text: "V. TUTORÍA Y ORIENTACIÓN EDUCATIVA", heading: HeadingLevel.HEADING_1 }),
+                new Paragraph({ text: "Plan de tutoría para el desarrollo integral de los estudiantes.", alignment: AlignmentType.LEFT, run: { color: "666666", size: 18 } }),
+                breakParagraph(),
 
-                new Paragraph({ text: "V. EVALUACIÓN", heading: HeadingLevel.HEADING_1 }),
+                ...(() => {
+                    const tutoriaContent = [];
+
+                    if (data.tutoriaDimensiones && data.tutoriaDimensiones.length > 0) {
+                        const dimensionesLabels = {
+                            'personal': 'Personal',
+                            'social': 'Social',
+                            'aprendizajes': 'De los Aprendizajes',
+                            'vocacional': 'Vocacional',
+                            'salud': 'Salud Corporal y Mental',
+                            'cultura': 'Cultura y Actualidad',
+                            'convivencia': 'Convivencia y Disciplina'
+                        };
+
+                        tutoriaContent.push(new Paragraph({
+                            children: [new TextRun({ text: "Dimensiones a trabajar:", bold: true })]
+                        }));
+
+                        data.tutoriaDimensiones.forEach(dim => {
+                            tutoriaContent.push(new Paragraph({
+                                children: [new TextRun(`• ${dimensionesLabels[dim] || dim}`)],
+                                spacing: { after: 60 }
+                            }));
+                        });
+
+                        tutoriaContent.push(breakParagraph());
+                    } else {
+                        tutoriaContent.push(new Paragraph('No se seleccionaron dimensiones de tutoría.'));
+                        tutoriaContent.push(breakParagraph());
+                    }
+
+                    tutoriaContent.push(new Paragraph({
+                        children: [new TextRun({ text: "Actividades y Estrategias:", bold: true })]
+                    }));
+                    tutoriaContent.push(new Paragraph(data.tutoriaActividades || 'No se especificaron actividades de tutoría.'));
+                    tutoriaContent.push(breakParagraph());
+
+                    return tutoriaContent;
+                })(),
+
+
+                new Paragraph({ text: "VI. EVALUACIÓN", heading: HeadingLevel.HEADING_1 }),
                 new Paragraph({ text: "Criterios y momentos de evaluación para el proceso de enseñanza-aprendizaje.", alignment: AlignmentType.LEFT, run: { color: "666666", size: 18 } }),
                 breakParagraph(),
                 new Paragraph({ children: [new TextRun({ text: "Orientaciones para la Evaluación Diagnóstica:", bold: true })] }),
@@ -468,7 +540,7 @@ exports.handler = async function(event) {
                 new Paragraph(data.evalSumativa || 'No se especificaron orientaciones.'),
                 breakParagraph(),
 
-                new Paragraph({ text: "VI. MATERIALES Y RECURSOS", heading: HeadingLevel.HEADING_1 }),
+                new Paragraph({ text: "VII. MATERIALES Y RECURSOS", heading: HeadingLevel.HEADING_1 }),
                 new Paragraph({ text: "Recursos didácticos y materiales necesarios para docentes y estudiantes.", alignment: AlignmentType.LEFT, run: { color: "666666", size: 18 } }),
                 breakParagraph(),
                 new Paragraph({ children: [new TextRun({ text: "Para el Docente:", bold: true })] }),
@@ -476,6 +548,43 @@ exports.handler = async function(event) {
                 breakParagraph(),
                 new Paragraph({ children: [new TextRun({ text: "Para el Estudiante:", bold: true })] }),
                 ...createNumberedList(data.recursosEstudiante),
+                breakParagraph(),
+                new Paragraph({ text: "VIII. REFERENCIAS BIBLIOGRÁFICAS", heading: HeadingLevel.HEADING_1 }),
+                new Paragraph({ text: "Fuentes consultadas para la elaboración de esta programación anual.", alignment: AlignmentType.LEFT, run: { color: "666666", size: 18 } }),
+                breakParagraph(),
+
+                // Renderizar referencias con checks azules - CON VALIDACIÓN
+                ...(() => {
+                    const referenciasContent = [];
+
+                    // Verificar que existan referencias y no estén vacías
+                    if (data.descReferencias && data.descReferencias.trim() !== '') {
+                        // Dividir las referencias por líneas
+                        const referencias = data.descReferencias.split('\n').filter(ref => ref.trim() !== '');
+
+                        // Verificar que haya al menos una referencia después del filtrado
+                        if (referencias.length > 0) {
+                            referencias.forEach(referencia => {
+                                referenciasContent.push(new Paragraph({
+                                    children: [
+                                        new TextRun({ text: "✓ ", color: "0000FF", bold: true, size: 24 }),
+                                        new TextRun({ text: referencia.trim() })
+                                    ],
+                                    spacing: { after: 120 }
+                                }));
+                            });
+                        } else {
+                            // Si después del filtrado no hay referencias
+                            referenciasContent.push(new Paragraph('No se generaron referencias bibliográficas.'));
+                        }
+                    } else {
+                        // Si data.descReferencias está vacío o es null
+                        referenciasContent.push(new Paragraph('No se generaron referencias bibliográficas.'));
+                    }
+
+                    return referenciasContent;
+                })(),
+
                 breakParagraph(),
 
                 // Campo de Firmas al final
